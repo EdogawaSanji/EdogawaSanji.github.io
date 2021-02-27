@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-C-2-0-新标准" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/27/C-2-0-%E6%96%B0%E6%A0%87%E5%87%86/" class="article-date">
+  <time class="dt-published" datetime="2021-02-27T15:41:23.000Z" itemprop="datePublished">2021-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/27/C-2-0-%E6%96%B0%E6%A0%87%E5%87%86/">C++ 2.0 新标准</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Variadic-Templates"><a href="#Variadic-Templates" class="headerlink" title="Variadic Templates"></a>Variadic Templates</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不定个数参数，不同类型参数，递归分解</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Types&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">const</span> T&amp; firstArg, <span class="keyword">const</span> Types&amp;... args)</span></span>&#123;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; firstArg &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">  print(args...);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;					<span class="comment">// 递归的边界条件</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 不定个数参数，不同类型参数，递归构造</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span>... Values&gt; <span class="class"><span class="keyword">class</span> <span class="title">tuple</span>;</span></span><br><span class="line"><span class="keyword">template</span> &lt;&gt; <span class="class"><span class="keyword">class</span> <span class="title">tuple</span>&lt;</span>&gt;;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> Head, <span class="keyword">typename</span>... Tail&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">tuple</span>&lt;</span>Head, Tail&gt; : <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">tuple</span>&lt;</span>Tail&gt; &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  Head m_head;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得参数个数</span></span><br><span class="line"><span class="keyword">sizeof</span>... (args);</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="initializer-list"><a href="#initializer-list" class="headerlink" title="initializer_list"></a>initializer_list</h1><ul>
+<li>{} : 构造 initializer_list 的临时对象：底层包含对象的 array 指针</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// usages:</span></span><br><span class="line"><span class="keyword">int</span> i; 		<span class="comment">// undifined value</span></span><br><span class="line"><span class="keyword">int</span> i&#123;&#125;;  <span class="comment">// initialized with 0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span>* p;		<span class="comment">// undifined ptr</span></span><br><span class="line"><span class="keyword">int</span>* p&#123;&#125;; <span class="comment">// nullptr</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>C++ 2.0 所有容器的构造、赋值函数、insert、assign 均可以接收 initializer_list；max()、min() 也可接收 initializer_list</li>
+</ul>
+<h1 id="构造函数关键字"><a href="#构造函数关键字" class="headerlink" title="构造函数关键字"></a>构造函数关键字</h1><h2 id="explicit"><a href="#explicit" class="headerlink" title="explicit"></a>explicit</h2><ul>
+<li>主要使用在 构造函数 前；阻止编译器隐式调用构造函数，只能被显式调用</li>
+</ul>
+<h2 id="default"><a href="#default" class="headerlink" title="= default"></a>= default</h2><ul>
+<li>使用编译器默认版本构造函数：不进行任何赋值操作 or 调用父类构造函数</li>
+</ul>
+<h2 id="delete"><a href="#delete" class="headerlink" title="= delete"></a>= delete</h2><ul>
+<li>可用于任何函数，标示函数无法使用</li>
+</ul>
+<h2 id="0"><a href="#0" class="headerlink" title="= 0"></a>= 0</h2><ul>
+<li>纯虚函数：父类不定义，交由子类定义</li>
+</ul>
+<h2 id="含有指针的-class-or-struct-需要自行定义-Big-Three"><a href="#含有指针的-class-or-struct-需要自行定义-Big-Three" class="headerlink" title="含有指针的 class or struct 需要自行定义 Big-Three"></a>含有指针的 class or struct 需要自行定义 Big-Three</h2><ul>
+<li>Big-Three：构造函数、赋值函数、析构函数</li>
+</ul>
+<h1 id="using"><a href="#using" class="headerlink" title="using"></a>using</h1><h2 id="Alias-Template：模板类别名"><a href="#Alias-Template：模板类别名" class="headerlink" title="Alias Template：模板类别名"></a>Alias Template：模板类别名</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">using</span> Vec = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T, MyAlloc&lt;T&gt;&gt;;				<span class="comment">// 不可对 Vec 进行特化 or 偏特化</span></span><br><span class="line"></span><br><span class="line">Vec&lt;<span class="keyword">int</span>&gt; my_vec;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>typedef：不可对模板类生成别名，只可对特定对象 or 类生成别名</p>
+</li>
+<li><p>template template parameter</p>
+</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">template</span> T, <span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span>&gt;</span> <span class="class"><span class="keyword">class</span> <span class="title">Container</span>&gt;</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTest</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  Containter&lt;T&gt; _container;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  MyTest() = <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">using</span> Vec = <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;T, MyAlloc&lt;T&gt;&gt;;</span><br><span class="line"></span><br><span class="line">MyTest&lt;MyString, Vec&gt; test1;</span><br></pre></td></tr></table></figure>
+<h2 id="Type-Alias"><a href="#Type-Alias" class="headerlink" title="Type Alias"></a>Type Alias</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. typedef void(*func)(int, int);</span></span><br><span class="line"><span class="keyword">using</span> func = <span class="keyword">void</span>(*)(<span class="keyword">int</span>, <span class="keyword">int</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span></span>&#123;&#125;;</span><br><span class="line">func = example;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. typedef T value_type;</span></span><br><span class="line"><span class="keyword">using</span> value_type = T;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="noexcept"><a href="#noexcept" class="headerlink" title="noexcept"></a>noexcept</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(Type &amp;x, Type &amp;y)</span> <span class="title">noexcept</span><span class="params">(<span class="keyword">noexcept</span>(x.swap(y)))</span></span>&#123;			<span class="comment">// noexcept 内部条件为 true，则不会抛异常</span></span><br><span class="line">  x.swap(y);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>==如果 move constructor or move assignment 非 noexcept，vector 在二倍成长的时候不会调用 move==</li>
+</ul>
+<h1 id="override"><a href="#override" class="headerlink" title="override"></a>override</h1><ul>
+<li>用于类的虚函数</li>
+<li>子类 override 父类的虚函数时，编译器会 check 父类是否有对应的同名虚函数；没有则会报错</li>
+</ul>
+<h1 id="final"><a href="#final" class="headerlink" title="final"></a>final</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">FinalStruct</span> <span class="keyword">final</span>&#123;</span>&#125;;						<span class="comment">// 不可被继承</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TestStruct</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Test</span><span class="params">()</span> <span class="keyword">final</span></span>;					<span class="comment">// 虚函数不可被 override</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="decltype"><a href="#decltype" class="headerlink" title="decltype"></a>decltype</h1><ul>
+<li>decltype：= typeof；取得变量 or 对象的类型</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. to declare return type</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line">auto add(T1 x, T2 y) -&gt; decltype(x + y)&#123;</span><br><span class="line">  <span class="keyword">return</span> (x + y);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 取得对象类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. pass the type of lambda</span></span><br><span class="line"><span class="keyword">auto</span> cmp = [&amp;]()&#123;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">set</span>&lt;<span class="built_in">string</span>, <span class="keyword">decltype</span>(cmp)&gt; cmp_set;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="lambdas"><a href="#lambdas" class="headerlink" title="lambdas"></a>lambdas</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// []() mutable throwSpec -&gt; retType &#123;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. []: [=] 外部变量通过 copy 传入 lambda；[&amp;] 外部变量通过引用传入 lambda</span></span><br><span class="line"><span class="keyword">int</span> x = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> y = <span class="number">42</span>;</span><br><span class="line"><span class="keyword">auto</span> q = [x, &amp;y]()&#123;&#125;;	<span class="comment">// pass y by reference; pass x by value</span></span><br><span class="line"><span class="keyword">auto</span> test = [=, &amp;y]()&#123;&#125;;	<span class="comment">// pass y by reference; pass others by value</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. mutable：允许 lambda 函数更改传入的外部变量</span></span><br><span class="line"><span class="keyword">int</span> id = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">auto</span> test = [id]() <span class="keyword">mutable</span> &#123;			<span class="comment">// id 为 declare 时的外部值</span></span><br><span class="line">  ++ id;</span><br><span class="line">&#125;;</span><br><span class="line">id = <span class="number">42</span>;</span><br><span class="line">test();		<span class="comment">// id = 1</span></span><br><span class="line">test();		<span class="comment">// id = 2</span></span><br><span class="line">test();		<span class="comment">// id = 3</span></span><br></pre></td></tr></table></figure>
+
+
+<h1 id="move"><a href="#move" class="headerlink" title="move"></a>move</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// moveable class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyString</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="keyword">char</span> *_data;</span><br><span class="line">  <span class="keyword">size_t</span> len;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  MyString (MyString&amp;&amp; str) <span class="keyword">noexcept</span> : _data(str._data), _len(str._len) &#123;</span><br><span class="line">    str._len = <span class="number">0</span>;</span><br><span class="line">    str._data = <span class="literal">nullptr</span>;   <span class="comment">// 不打断则为浅拷贝</span></span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  MyString&amp; <span class="keyword">operator</span>=(Mystring&amp;&amp; str) <span class="keyword">noexcept</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;str) &#123;</span><br><span class="line">      <span class="keyword">if</span> (_data) <span class="keyword">delete</span> _data;		<span class="comment">// 清空自身的数据</span></span><br><span class="line">      _len = str._len;</span><br><span class="line">      _data = str._data;</span><br><span class="line">      str._len = <span class="number">0</span>;</span><br><span class="line">      str._data = <span class="literal">nullptr</span>;  <span class="comment">// 防止str析构时被delete掉</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">virtual</span> ~MyString() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_data) &#123;</span><br><span class="line">      <span class="keyword">delete</span> _data;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="右值"><a href="#右值" class="headerlink" title="右值"></a>右值</h2><ul>
+<li>临时对象</li>
+<li>std::move(对象)</li>
+</ul>
+<h2 id="forward"><a href="#forward" class="headerlink" title="forward"></a>forward</h2><ul>
+<li>完美转发</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">process</span><span class="params">(<span class="keyword">int</span>&amp;&amp; i)</span></span>&#123;</span><br><span class="line">  process(i);								<span class="comment">// 这里 i 成为了左值</span></span><br><span class="line">  process(<span class="built_in">std</span>::forward(i)); <span class="comment">// 调用时保留了 i 的右值属性</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/27/C-2-0-%E6%96%B0%E6%A0%87%E5%87%86/" data-id="cklnw7xys0000wbls4j6he9tg" data-title="C++ 2.0 新标准" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/hello-world/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T14:16:20.017Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/20/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/01/20/hello-world/" data-id="ckk5igs1p0000czlsgnz968au" data-title="Hello World" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/02/27/C-2-0-%E6%96%B0%E6%A0%87%E5%87%86/">C++ 2.0 新标准</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/20/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
